@@ -35,8 +35,10 @@
 var API_KEY = 'AIzaSyClNfdZIs8di1m0zztluWwmdbAewfQJpqQ';
 
 // Specify the URL you want PageSpeed results for here:
-var URL_TO_GET_RESULTS_FOR = 'http://www.kevinreilly.io';
+var URL_TO_GET_RESULTS_FOR = 'https://developers.google.com/speed/pagespeed/insights/';
+</script>
 
+<script>
 var API_URL = 'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?';
 var CHART_API_URL = 'http://chart.apis.google.com/chart?';
 
@@ -88,8 +90,9 @@ function runPagespeedCallbacks(result) {
 // to discover any callbacks registered below, but this can be
 // synchronous in your code.
 setTimeout(runPagespeed, 0);
+</script>
 
-
+<script>
 callbacks.displayPageSpeedScore = function(result) {
   var score = result.score;
   // Construct the query to send to the Google Chart Tools.
