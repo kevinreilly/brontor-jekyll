@@ -75,7 +75,7 @@
 
 		<script>
 		callbacks.displayPageSpeedScore = function(result) {
-		  var score = result.kind;
+		  var score = result.ruleGroups.SPEED.score;
 		  // Construct the query to send to the Google Chart Tools.
 		  var query = [
 		    'chtt=Page+Speed+score:+' + score,
