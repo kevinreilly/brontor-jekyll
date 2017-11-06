@@ -27,12 +27,12 @@
 
 		// Invokes the PageSpeed Insights API. The response will contain
 		// JavaScript that invokes our callback with the PageSpeed results.
-		function runPagespeed() {
+		function runPagespeed(url) {
 		  var s = document.createElement('script');
 		  s.type = 'text/javascript';
 		  s.async = true;
 		  var query = [
-		    'url=' + URL_TO_GET_RESULTS_FOR,
+		    'url=' + url,
 		    'callback=runPagespeedCallbacks',
 		    'key=' + API_KEY,
 		  ].join('&');
@@ -68,7 +68,7 @@
 		// Invoke the callback that fetches results. Async here so we're sure
 		// to discover any callbacks registered below, but this can be
 		// synchronous in your code.
-		setTimeout(runPagespeed, 0);
+		setTimeout(runPagespeed(URL_TO_GET_RESULTS_FOR), 0);
 		</script>
 
 		<script>
