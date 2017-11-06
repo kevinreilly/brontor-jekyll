@@ -64,7 +64,7 @@ function runPagespeedCallbacks(result) {
   if (result.error) {
     var errors = result.error.errors;
     for (var i = 0, len = errors.length; i < len; ++i) {
-      if (errors[i].reason == 'badRequest' && API_KEY == 'yourAPIKey') {
+      if (errors[i].reason == 'badRequest' && API_KEY == 'AIzaSyClNfdZIs8di1m0zztluWwmdbAewfQJpqQ') {
         alert('Please specify your Google API key in the API_KEY variable.');
       } else {
         // NOTE: your real production app should use a better
@@ -90,7 +90,6 @@ function runPagespeedCallbacks(result) {
 setTimeout(runPagespeed, 0);
 
 
-
 callbacks.displayPageSpeedScore = function(result) {
   var score = result.score;
   // Construct the query to send to the Google Chart Tools.
@@ -106,7 +105,6 @@ callbacks.displayPageSpeedScore = function(result) {
   i.src = CHART_API_URL + query;
   document.body.insertBefore(i, null);
 };
-
 </script>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 	
