@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark {% if page.layout == 'home' %}sticky-top{% endif %}">
 	{% if page.nav-fixed-width == true %}
 		<div class="container">
 	{% else %}

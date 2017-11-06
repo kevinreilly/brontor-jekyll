@@ -4,6 +4,27 @@
 @import "bootstrap/bootstrap.scss";
 @import "font-awesome/scss/font-awesome.scss";
 
+// General Fixes
 img {
 	max-width:100%;
+}
+
+// Theme Styles
+.jumbotron {
+	color:#fff;
+	background-size:cover;
+	min-height:90vh;
+	margin-bottom:0;
+}
+.carousel {
+	margin:0 ($grid-gutter-width / -2);
+}
+
+// Nitty Gritty
+.page-home {
+	.jumbotron {
+		background-position:bottom;
+		border-radius:0;
+		
+	}
 }
