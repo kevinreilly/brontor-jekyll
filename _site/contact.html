@@ -45,7 +45,7 @@
 		  if (result.error) {
 		    var errors = result.error.errors;
 		    for (var i = 0, len = errors.length; i < len; ++i) {
-		      if (errors[i].reason == 'badRequest' && API_KEY == 'AIzaSyClNfdZIs8di1m0zztluWwmdbAewfQJpqQ') {
+		      if (errors[i].reason == 'badRequest' && API_KEY == 'yourAPIKey') {
 		        alert('Please specify your Google API key in the API_KEY variable.');
 		      } else {
 		        // NOTE: your real production app should use a better
@@ -55,6 +55,8 @@
 		    }
 		    return;
 		  }
+		  
+		  console.log(result);
 
 		  // Dispatch to each function on the callbacks object.
 		  for (var fn in callbacks) {
