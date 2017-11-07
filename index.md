@@ -20,29 +20,7 @@ slides:
 
 # Home
 
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
+{% include pagespeed.html %}
 
 Kevin
 
