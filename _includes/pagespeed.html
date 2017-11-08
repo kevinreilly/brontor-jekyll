@@ -1,8 +1,22 @@
-<form class="pagespeed-form">
-  <input type="text" class="test_url" />
-  <button type="submit" class="run_test">Get Score</button>
-</form>
-<div class="pagespeed-results"></div>
+<div class="row">
+  <div class="col">
+    <div class="loading">
+      <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+      <span class="sr-only">Loading...</span>
+    </div>
+    <form class="pagespeed-form">
+      <h2>Enter your website's URL</h2>
+      <div class="input-group">
+        <input type="text" class="form-control test_url" placeholder="example.com" aria-label="example.com">
+        <span class="input-group-btn">
+          <button class="btn btn-secondary run_test" type="submit">Run Test</button>
+        </span>
+      </div>
+    </form>
+    <div class="pagespeed-results"></div>
+  </div>
+</div>
+
 
 <script>
   // Specify your actual API key here:
@@ -69,7 +83,7 @@
 <script>
   callbacks.displayPageSpeedScore = function(result) {
     var score = result.ruleGroups.SPEED.score;
-    document.getElementsByClassName('pagespeed-results')[0].innerHTML = 'Score: '+ score;
+    document.getElementsByClassName('pagespeed-results')[0].innerHTML = 'Score: '+ score +'/100';
   };
 </script>
 
@@ -85,9 +99,10 @@
                     impact: ruleResult.ruleImpact});
     }
     results.sort(sortByImpact);
-    var ul = document.createElement('ul');
+    var ul = document.createElement('div');
     for (var i = 0, len = results.length; i < len; ++i) {
-      var r = document.createElement('li');
+      var r = document.createElement('div');
+      r.className += 'alert alert-danger';
       r.innerHTML = results[i].name;
       ul.insertBefore(r, null);
     }
@@ -95,6 +110,7 @@
       document.getElementsByClassName('pagespeed-results')[0].append(ul);
     } else {
       var div = document.createElement('div');
+      div.className += 'alert alert-success';
       div.innerHTML = 'No high impact suggestions. Good job!';
       document.getElementsByClassName('pagespeed-results')[0].append(div);
     }
