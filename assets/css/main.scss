@@ -20,6 +20,13 @@ img {
 	margin:0 ($grid-gutter-width / -2);
 }
 
+// Page Speed Tool
+.pagespeed-results {
+	.alert {
+		display:none;
+	}
+}
+
 // Nitty Gritty
 .page-home {
 	.jumbotron {
