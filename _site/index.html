@@ -3,38 +3,41 @@
 <html lang="en">
 	<head>
 	<meta charset="utf-8">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Brontor Web Design</title>
 	<link rel="stylesheet" href="assets/css/main.css">
 	<script src="assets/js/jquery-3.2.1.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<!--[if lt IE 9]>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
 	<![endif]-->
 </head>
 	<body class="page-home">
 	
-		<div class="jumbotron" style="background-image:url(assets/img/splash1.jpg);">
-  <div class="row">
-    <div class="col-md-8 col-lg-6">
-      
-      	<h1 class="display-3">Hello, world!</h1>
-      
-      
-      	<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information. This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      
-      
-    	<p class="lead">
-    	  <a class="btn btn-outline-light btn-lg" href="contact" role="button">Learn more</a>
-    	</p>
-    	
+		<div class="jumbotron jumbotron-fluid" style="background-image:url(assets/img/splash1.jpg);">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8">
+        
+        	<h1 class="display-4">Less is more</h1>
+        
+        
+        	<p class="lead">At Brontor, we believe that modern websites have become convoluted and tortuous to manage. We take a minimalistic approach that translates into less stress, more conversions, and better search engine optimization.</p>
+        
+        
+      	<p class="lead">
+      	  <a class="btn btn-outline-light btn-lg" href="contact" role="button">Learn more</a>
+      	</p>
+      	
+      </div>
     </div>
   </div>
 </div>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top sticky-top sticky-start-bottom">
 	
-		<div class="container-fluid">
+		<div class="container">
 	
-		<a class="navbar-brand" href="#">Navbar</a>
+		<a class="navbar-brand" href="#">Brontor</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -44,13 +47,13 @@
 					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Features</a>
+					<a class="nav-link" href="#">Test</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Pricing</a>
+					<a class="nav-link" href="#">Test</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link disabled" href="#">Disabled</a>
+					<a class="nav-link disabled" href="#">Test</a>
 				</li>
 			</ul>
 		</div>
@@ -59,9 +62,10 @@
 	
 	</div>
 	
-		<div class="container-fluid">
+		<div class="container">
 	
-	<h1 id="home">Home</h1>
+	<h2 id="search-engine-optimization-seo">Search Engine Optimization (SEO)</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
 <div class="row">
   <div class="col">
@@ -70,7 +74,6 @@
       <span class="sr-only">Loading...</span>
     </div>
     <form class="pagespeed-form">
-      <h2>Enter your website's URL</h2>
       <div class="input-group">
         <input type="text" class="form-control test_url" placeholder="example.com" aria-label="example.com" />
         <span class="input-group-btn">
@@ -83,23 +86,11 @@
 </div>
 
 <script>
-  // Specify your actual API key here:
   var API_KEY = 'AIzaSyClNfdZIs8di1m0zztluWwmdbAewfQJpqQ';
-
-  // Specify the URL you want PageSpeed results for here:
-  //var URL_TO_GET_RESULTS_FOR = 'http://kevinreilly.io';
-
-
   var API_URL = 'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?';
   var CHART_API_URL = 'https://chart.apis.google.com/chart?';
-
-  // Object that will hold the callbacks that process results from the
-  // PageSpeed Insights API.
-  var callbacks = {}
-
-  // Invokes the PageSpeed Insights API. The response will contain
-  // JavaScript that invokes our callback with the PageSpeed results.
-  function runPagespeed(url) {
+  var callbacks = {};
+  var runPagespeed = function(url) {
     var s = document.createElement('script');
     s.type = 'text/javascript';
     s.async = true;
@@ -110,51 +101,35 @@
     ].join('&');
     s.src = API_URL + query;
     document.head.insertBefore(s, null);
-  }
-
-  // Our JSONP callback. Checks for errors, then invokes our callback handlers.
-  function runPagespeedCallbacks(result) {
+  };
+  var runPagespeedCallbacks = function(result) {
     if (result.error) {
       var errors = result.error.errors;
       for (var i = 0, len = errors.length; i < len; ++i) {
         if (errors[i].reason == 'badRequest' && API_KEY == 'yourAPIKey') {
-          alert('Please specify your Google API key in the API_KEY variable.');
+          console.log('Please specify your Google API key in the API_KEY variable.');
         } else {
-          // NOTE: your real production app should use a better
-          // mechanism than alert() to communicate the error to the user.
-          alert(errors[i].message);
+          console.log(errors[i].message);
         }
       }
       return;
     }
-    
-    // Dispatch to each function on the callbacks object.
     for (var fn in callbacks) {
       var f = callbacks[fn];
       if (typeof f == 'function') {
         callbacks[fn](result);
       }
     }
-  }
-
-  // Invoke the callback that fetches results. Async here so we're sure
-  // to discover any callbacks registered below, but this can be
-  // synchronous in your code.
-  //setTimeout(runPagespeed(URL_TO_GET_RESULTS_FOR), 0);
-
-
+  };
   callbacks.displayPageSpeedScore = function(result) {
     var score = result.ruleGroups.SPEED.score;
-    document.getElementsByClassName('pagespeed-results')[0].innerHTML = 'Score: '+ score +'/100';
+    $('.pagespeed-results').html('<div class="h3">Score: '+ score +'/100</div>');
   };
-
-
   callbacks.displayTopPageSpeedSuggestions = function(result) {
     var results = [];
     var ruleResults = result.formattedResults.ruleResults;
     for (var i in ruleResults) {
       var ruleResult = ruleResults[i];
-      // Don't display lower-impact suggestions.
       if (ruleResult.ruleImpact < 0.1) continue;
       results.push({name: ruleResult.localizedRuleName,
                     impact: ruleResult.ruleImpact});
@@ -175,19 +150,31 @@
       div.innerHTML = 'No high impact suggestions. Good job!';
       document.getElementsByClassName('pagespeed-results')[0].append(div);
     }
+    displayResults();
+    /*
     var alerts = $('.pagespeed-results').find('.alert');
     for(var i = 0; i < alerts.length; i++){
       $(alerts[i]).slideDown();
     }
+    */
   };
-  function sortByImpact(a, b) { return b.impact - a.impact; }
+  var sortByImpact = function(a, b){
+    return b.impact - a.impact;
+  }
+  var displayResults = function(){
+    $('.loading').fadeOut(function(){
+      $('.pagespeed-results').slideDown('slow');
+    });
+  };
 
   $('.pagespeed-form').on('submit', function(e){
     e.preventDefault();
     var height = $(this).parent().height();
     $(this).parent().css({'minHeight':height});
 
-    $(this).fadeOut();
+    $(this).fadeOut(function(){
+      $(this).siblings('.loading').fadeIn();
+    });
     
     var test_url = $(this).find('.test_url').val();
     if(!test_url.includes('http')){
@@ -197,78 +184,7 @@
   });
 </script>
 
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
-<p>Kevin</p>
-
+<p><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></p>
 
 		</div>
 		<script src="assets/js/bootstrap.bundle.min.js"></script>

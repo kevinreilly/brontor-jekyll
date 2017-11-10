@@ -1,21 +1,9 @@
 <script>
-  // Specify your actual API key here:
   var API_KEY = 'AIzaSyClNfdZIs8di1m0zztluWwmdbAewfQJpqQ';
-
-  // Specify the URL you want PageSpeed results for here:
-  //var URL_TO_GET_RESULTS_FOR = 'http://kevinreilly.io';
-
-
   var API_URL = 'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?';
   var CHART_API_URL = 'https://chart.apis.google.com/chart?';
-
-  // Object that will hold the callbacks that process results from the
-  // PageSpeed Insights API.
-  var callbacks = {}
-
-  // Invokes the PageSpeed Insights API. The response will contain
-  // JavaScript that invokes our callback with the PageSpeed results.
-  function runPagespeed(url) {
+  var callbacks = {};
+  var runPagespeed = function(url) {
     var s = document.createElement('script');
     s.type = 'text/javascript';
     s.async = true;
@@ -26,51 +14,35 @@
     ].join('&');
     s.src = API_URL + query;
     document.head.insertBefore(s, null);
-  }
-
-  // Our JSONP callback. Checks for errors, then invokes our callback handlers.
-  function runPagespeedCallbacks(result) {
+  };
+  var runPagespeedCallbacks = function(result) {
     if (result.error) {
       var errors = result.error.errors;
       for (var i = 0, len = errors.length; i < len; ++i) {
         if (errors[i].reason == 'badRequest' && API_KEY == 'yourAPIKey') {
-          alert('Please specify your Google API key in the API_KEY variable.');
+          console.log('Please specify your Google API key in the API_KEY variable.');
         } else {
-          // NOTE: your real production app should use a better
-          // mechanism than alert() to communicate the error to the user.
-          alert(errors[i].message);
+          console.log(errors[i].message);
         }
       }
       return;
     }
-    
-    // Dispatch to each function on the callbacks object.
     for (var fn in callbacks) {
       var f = callbacks[fn];
       if (typeof f == 'function') {
         callbacks[fn](result);
       }
     }
-  }
-
-  // Invoke the callback that fetches results. Async here so we're sure
-  // to discover any callbacks registered below, but this can be
-  // synchronous in your code.
-  //setTimeout(runPagespeed(URL_TO_GET_RESULTS_FOR), 0);
-
-
+  };
   callbacks.displayPageSpeedScore = function(result) {
     var score = result.ruleGroups.SPEED.score;
-    document.getElementsByClassName('pagespeed-results')[0].innerHTML = 'Score: '+ score +'/100';
+    $('.pagespeed-results').html('<div class="h3">Score: '+ score +'/100</div>');
   };
-
-
   callbacks.displayTopPageSpeedSuggestions = function(result) {
     var results = [];
     var ruleResults = result.formattedResults.ruleResults;
     for (var i in ruleResults) {
       var ruleResult = ruleResults[i];
-      // Don't display lower-impact suggestions.
       if (ruleResult.ruleImpact < 0.1) continue;
       results.push({name: ruleResult.localizedRuleName,
                     impact: ruleResult.ruleImpact});
@@ -91,19 +63,31 @@
       div.innerHTML = 'No high impact suggestions. Good job!';
       document.getElementsByClassName('pagespeed-results')[0].append(div);
     }
+    displayResults();
+    /*
     var alerts = $('.pagespeed-results').find('.alert');
     for(var i = 0; i < alerts.length; i++){
       $(alerts[i]).slideDown();
     }
+    */
   };
-  function sortByImpact(a, b) { return b.impact - a.impact; }
+  var sortByImpact = function(a, b){
+    return b.impact - a.impact;
+  }
+  var displayResults = function(){
+    $('.loading').fadeOut(function(){
+      $('.pagespeed-results').slideDown('slow');
+    });
+  };
 
   $('.pagespeed-form').on('submit', function(e){
     e.preventDefault();
     var height = $(this).parent().height();
     $(this).parent().css({'minHeight':height});
 
-    $(this).fadeOut();
+    $(this).fadeOut(function(){
+      $(this).siblings('.loading').fadeIn();
+    });
     
     var test_url = $(this).find('.test_url').val();
     if(!test_url.includes('http')){

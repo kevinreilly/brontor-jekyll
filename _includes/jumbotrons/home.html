@@ -1,17 +1,19 @@
-<div class="jumbotron" {% if page.jumbotron.background %}style="background-image:url(assets/img/{{page.jumbotron.background}});"{% endif %}>
-  <div class="row">
-    <div class="col-md-8 col-lg-6">
-      {% if page.jumbotron.header %}
-      	<h1 class="display-3">{{page.jumbotron.header}}</h1>
-      {% endif %}
-      {% if page.jumbotron.text %}
-      	<p class="lead">{{page.jumbotron.text}}</p>
-      {% endif %}
-      {% if page.jumbotron.button-text %}
-    	<p class="lead">
-    	  <a class="btn btn-outline-light btn-lg" href="{{page.jumbotron.button-link}}" role="button">{{page.jumbotron.button-text}}</a>
-    	</p>
-    	{% endif %}
+<div class="jumbotron jumbotron-fluid" {% if page.jumbotron.background %}style="background-image:url(assets/img/{{page.jumbotron.background}});"{% endif %}>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-lg-8">
+        {% if page.jumbotron.header %}
+        	<h1 class="display-4">{{page.jumbotron.header}}</h1>
+        {% endif %}
+        {% if page.jumbotron.lead1 %}
+        	<p class="lead">{{page.jumbotron.lead1}}</p>
+        {% endif %}
+        {% if page.jumbotron.button-text %}
+      	<p class="lead">
+      	  <a class="btn btn-outline-light btn-lg" href="{{page.jumbotron.button-link}}" role="button">{{page.jumbotron.button-text}}</a>
+      	</p>
+      	{% endif %}
+      </div>
     </div>
   </div>
 </div>

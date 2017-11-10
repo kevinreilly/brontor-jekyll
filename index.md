@@ -1,10 +1,11 @@
 ---
 layout: home
+sticky-top: true
 title: Brontor Web Design
 jumbotron:
   background: splash1.jpg
-  header: Hello, world!
-  text: This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information. This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+  header: Less is more
+  lead1: At Brontor, we believe that modern websites have become convoluted and tortuous to manage. We take a minimalistic approach that translates into less stress, more conversions, and better search engine optimization.
   button-text: Learn more
   button-link: contact
 slides:
@@ -18,80 +19,9 @@ slides:
     caption-title: Slide 1 Caption Title
 ---
 
-# Home
+## Search Engine Optimization (SEO)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 {% include pagespeed.html %}
 
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-Kevin
-
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
