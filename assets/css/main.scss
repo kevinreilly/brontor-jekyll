@@ -33,11 +33,6 @@ h2 {
 }
 .jumbotron + .sticky-top {
 	//bottom:0;
-	position:-webkit-sticky;
-	position:-moz-sticky;
-	position:-ms-sticky;
-	position:-o-sticky;
-	position:sticky;
 }
 .jumbotron {
 	min-height:100vh;
